@@ -18,11 +18,13 @@
  @import 'bootstrap';
  
  
+ //typography styles
  h1, h2, h3 {
      font-family: 'Open-Sans', sans-serif;
  }
 
 
+//background gradient
 .home-callout, .navbar {
     //gradient by https://twitter.com/_ighosh
     background: #00c6ff;  /* fallback for old browsers */
@@ -31,30 +33,23 @@
 
 }
 
+//navbar styles
 .navbar{
     border: none;
     
 }
 
-.navbar-default .navbar-brand {
-    color: white;
-}
-
-.navbar-default .navbar-brand:hover {
-    color: white;
-    opacity: 0.75;
-}
-
-
+.navbar-default .navbar-brand,
 .navbar-default .navbar-nav > li > a {
     color: white;
+    &:hover{
+        color: white;
+        opacity: 0.75;
+    }
 }
 
-.navbar-default .navbar-nav > li > a:hover {
-    color: white;
-    opacity: 0.75;
-}
 
+//homepage styles
 .home-callout {
     color: white;
     margin-top: -20px;
