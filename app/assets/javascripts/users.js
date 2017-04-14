@@ -1,15 +1,19 @@
 /* global $, Stripe */
 //Document ready.
 $(document).on('turbolinks:load', function(){
+   
   var theForm = $('#pro_form');
-  var submitBtn = $('#form-submit-btn');
+  var submitBtn = $('#form-submit-btn');  
   //Set Stripe public key.
+  
   Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
+  //setTimeout(alert("4 seconds"),4000);
   //When user clicks form submit btn,
   submitBtn.click(function(event){
+    //setTimeout(alert("4 seconds"),4000);
     //prevent default submission behavior.
     event.preventDefault();
-    submitBtn.val("Processing").prop('disabled', true);
+    submitBtn.val("Processing").attr('disabled', true);
     //Collect the credit card fields.
     var ccNum = $('#card_number').val(),
         cvcNum = $('#card_code').val(),
@@ -34,15 +38,23 @@ $(document).on('turbolinks:load', function(){
     }
     if (error) {
       //If there are card errors, don't send to Stripe.
-      submitBtn.prop('disabled', false).val("Sign Up");
+      submitBtn.attr('disabled', false).val("Sign Up");
     } else {
       //Send the card info to Stripe.
+      //alert('test');
+     
       Stripe.createToken({
         number: ccNum,
         cvc: cvcNum,
         exp_month: expMonth,
         exp_year: expYear
       }, stripeResponseHandler);
+      //   Stripe.createToken({
+      //   number: '4111111111111111',
+      //   cvc: '123',
+      //   exp_month: '1',
+      //   exp_year: '2019'
+      // }, stripeResponseHandler);
     }
     return false;
   });
